@@ -4,12 +4,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
 public class MemoryMemberRepository implements MemberRepository{
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
-    @Override
     public Member save(Member member) {
         member.setId(++sequence);           //id는 시스템이 자동할당, name은 고객이 직접할당
         store.put(member.getId(), member);  //두 정보값 저장
